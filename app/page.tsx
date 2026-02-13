@@ -8,7 +8,7 @@ export default function Home() {
       {/* Discover A.I. Button */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 overflow-hidden w-100 h-150">
         <div className="w-90 h-90 border-2 border-dotted border-[#A0A4AB] rotate-45 absolute -left-50 top-1/2 -translate-y-1/2" />
-        <button className="flex gap-3 items-center absolute top-1/2 -translate-y-1/2 left-8 z-10 cursor-pointer group">
+        <button className="flex gap-3 items-center absolute top-1/2 -translate-y-1/2 left-8 z-10 cursor-not-allowed group">
           <Image
             src={LeftButton}
             alt="go to Discover A.I. page"
