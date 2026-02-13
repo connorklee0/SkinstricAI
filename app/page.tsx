@@ -1,6 +1,7 @@
 import RightButton from "@/public/buttin-icon-shrunk-right.svg";
 import LeftButton from "@/public/buttin-icon-shrunk-left.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -28,14 +29,17 @@ export default function Home() {
       {/* Take Test Button */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 overflow-hidden w-100 h-150">
         <div className="w-90 h-90 border-2 border-dotted border-[#A0A4AB] rotate-45 absolute -right-50 top-1/2 -translate-y-1/2" />
-        <button className="flex gap-3 items-center absolute top-1/2 -translate-y-1/2 right-8 z-10 cursor-pointer group">
+        <Link
+          href="/testing"
+          className="flex gap-3 items-center absolute top-1/2 -translate-y-1/2 right-8 z-10 cursor-pointer group"
+        >
           <div className="text-sm uppercase">Take Test</div>
           <Image
             src={RightButton}
             alt="go to Take Test page"
             className="transition-transform duration-300 group-hover:scale-110"
           />
-        </button>
+        </Link>
       </div>
 
       {/* Description */}

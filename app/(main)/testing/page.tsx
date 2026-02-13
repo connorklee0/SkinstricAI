@@ -1,6 +1,7 @@
 "use client";
 
 import LeftButton from "@/components/UI/LeftButton";
+import RightButton from "@/components/RightButton";
 import { UserInput } from "@/components/UI/UserInput";
 import { useMultiStepForm } from "@/hooks/useMultiStepForm";
 
@@ -69,6 +70,13 @@ const Testing = () => {
       <div className="absolute bottom-10 left-10">
         <LeftButton text={"Back"} link={"/"} />
       </div>
+
+      {/* Proceed button */}
+      {step === "submitted" && (
+        <div className="absolute bottom-10 right-10">
+          <RightButton text={"Proceed"} link={"/result"} />
+        </div>
+      )}
     </div>
   );
 };
