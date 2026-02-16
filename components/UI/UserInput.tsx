@@ -18,7 +18,7 @@ export const UserInput: React.FC<UserInputProps> = ({
   onSubmit,
 }) => {
   return (
-    <div className="relative z-10">
+    <div className="relative z-10 transform -translate-y-8">
       <div className="uppercase tracking-widest text-[#313030af] font-extralight text-sm leading-12">
         Click to type
       </div>
