@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import {
   convertImageToBase64,
   submitImageAnalysis,
@@ -8,6 +9,7 @@ import {
 } from "@/library/imageUpload";
 
 export const useImageUpload = () => {
+  const router = useRouter();
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string>("");
@@ -29,8 +31,9 @@ export const useImageUpload = () => {
       const result = await submitImageAnalysis(base64Image);
 
       alert("Image analyzed successfully!");
-      console.log("Analysis result:", result);
-      // Handle success - you can navigate or show results here
+      if (result) {
+        router.push("/select");
+      }
 
       return result;
     } catch (err) {
