@@ -23,6 +23,7 @@ const RightButton = ({ text, link, disabled = false }: RightButtonProps) => {
         alt=""
         className="transition-transform duration-300 group-hover:scale-110 size-12"
         aria-hidden="true"
+        draggable={false}
       />
     </Link>
   );

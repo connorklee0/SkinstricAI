@@ -30,6 +30,7 @@ const Result = () => {
               alt="Preview Image"
               className="object-cover"
               fill
+              draggable={false}
             />
           )}
         </div>
@@ -64,6 +65,7 @@ const Result = () => {
                   src={Camera}
                   alt="Camera"
                   className="hover:scale-110 transition duration-800"
+                  draggable={false}
                 />
               </button>
               <div className="absolute -top-7 -right-8">
@@ -72,7 +74,7 @@ const Result = () => {
                     Allow A.I. <br /> to scan your face
                   </p>
                 </div>
-                <Image src={CameraLine} alt="" />
+                <Image src={CameraLine} alt="" draggable={false} />
               </div>
             </Border>
 
@@ -83,10 +85,11 @@ const Result = () => {
                   src={Gallery}
                   alt="Gallery"
                   className="hover:scale-110 transition duration-800"
+                  draggable={false}
                 />
               </button>
               <div className="absolute -bottom-9 -left-5">
-                <Image src={GalleryLine} alt="" />
+                <Image src={GalleryLine} alt="" draggable={false} />
                 <div className="absolute right-12 w-40">
                   <p className="uppercase text-xs text-right">
                     Allow A.I. <br /> access to gallery

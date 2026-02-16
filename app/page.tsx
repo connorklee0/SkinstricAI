@@ -14,6 +14,7 @@ export default function Home() {
             src={LeftButton}
             alt="go to Discover A.I. page"
             className="transition-transform duration-300 group-hover:scale-110"
+            draggable={false}
           />
           <div className=" text-sm uppercase">Discover A.I.</div>
         </button>
@@ -38,6 +39,7 @@ export default function Home() {
             src={RightButton}
             alt="go to Take Test page"
             className="transition-transform duration-300 group-hover:scale-110"
+            draggable={false}
           />
         </Link>
       </div>
