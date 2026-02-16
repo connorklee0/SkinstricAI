@@ -7,6 +7,7 @@ import Camera from "@/public/camera.svg";
 import Gallery from "@/public/gallery.svg";
 import GalleryLine from "@/public/galleryline.svg";
 import CameraLine from "@/public/cameraline.svg";
+import { LoadingEllipsis } from "@/components/UI/LoadingEllipsis";
 import { useImageUpload } from "@/hooks/useImageUpload";
 
 const Result = () => {
@@ -47,12 +48,12 @@ const Result = () => {
 
       {/* Main Content */}
       <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex">
-        {isUploading ? (
+        {true ? (
           <Border size={90}>
             <div className="flex flex-col">
-              <div className="text-lg font-normal uppercase">
+              <div className="text-lg font-bold uppercase flex flex-col items-center">
                 Preparing your analysis
-                <div className="text-6xl">...</div>
+                <LoadingEllipsis />
               </div>
             </div>
           </Border>

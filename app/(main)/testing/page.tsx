@@ -5,6 +5,7 @@ import RightButton from "@/components/UI/RightButton";
 import Border from "@/components/UI/Border";
 import { UserInput } from "@/components/UI/UserInput";
 import { useMultiStepForm } from "@/hooks/useMultiStepForm";
+import { LoadingEllipsis } from "@/components/UI/LoadingEllipsis";
 
 const Testing = () => {
   const {
@@ -29,9 +30,9 @@ const Testing = () => {
           {/* Input fields */}
           {isSubmitting ? (
             <div className="flex flex-col">
-              <div className="text-lg font-normal text-[#313030af]">
+              <div className="text-lg uppercase text-[#313030af] flex flex-col items-center">
                 Processing submission
-                <div className="text-6xl">...</div>
+                <LoadingEllipsis />
               </div>
             </div>
           ) : step === "submitted" ? (
