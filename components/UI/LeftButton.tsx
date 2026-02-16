@@ -22,6 +22,7 @@ const LeftButton = ({ text, link, disabled = false }: LeftButtonProps) => {
         alt=""
         className="transition-transform duration-300 group-hover:scale-110 size-12"
         aria-hidden="true"
+        draggable={false}
       />
       <span className="text-sm uppercase font-bold">{text}</span>
     </Link>
