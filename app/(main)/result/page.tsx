@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import LeftButton from "@/components/UI/LeftButton";
 import Border from "@/components/UI/Border";
 import Camera from "@/public/camera.svg";
