@@ -3,7 +3,7 @@
 import LeftButton from "@/components/UI/LeftButton";
 import RightButton from "@/components/UI/RightButton";
 import Border from "@/components/UI/Border";
-import { UserInput } from "@/components/UI/UserInput";
+import { UserInput } from "@/components/UserInput";
 import { useMultiStepForm } from "@/hooks/useMultiStepForm";
 import { LoadingEllipsis } from "@/components/UI/LoadingEllipsis";
 

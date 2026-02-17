@@ -1,9 +1,9 @@
 "use client";
 
 import { useAppSelector } from "@/store/hooks";
-import { useEffect } from "react";
 import LeftButton from "@/components/UI/LeftButton";
 import RightButton from "@/components/UI/RightButton";
+import { AnalysisVisual } from "@/components/AnalysisVisual";
 import Link from "next/link";
 
 const page = () => {
@@ -32,7 +32,9 @@ const page = () => {
           </div>
         </div>
       ) : (
-        <></>
+        <>
+          <AnalysisVisual analysisData={analysisData?.data} />
+        </>
       )}
 
       {/* Navigation Buttons */}
