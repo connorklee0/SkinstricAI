@@ -8,7 +8,7 @@ const Header = () => {
         <div className="text-[#313030af]">[ Intro ]</div>
       </div>
 
-      <div className="uppercase border bg-black text-white py-2 px-4">
+      <div className="uppercase border bg-black text-white py-2 px-4 cursor-not-allowed">
         Enter Code
       </div>
     </div>
