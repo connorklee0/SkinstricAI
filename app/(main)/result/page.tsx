@@ -67,6 +67,7 @@ const Result = () => {
                   alt="Camera"
                   className="hover:scale-110 transition duration-800"
                   draggable={false}
+                  loading="eager"
                 />
               </button>
               <div className="absolute -top-7 -right-8">
@@ -87,6 +88,7 @@ const Result = () => {
                   alt="Gallery"
                   className="hover:scale-110 transition duration-800"
                   draggable={false}
+                  loading="eager"
                 />
               </button>
               <div className="absolute -bottom-9 -left-5">
