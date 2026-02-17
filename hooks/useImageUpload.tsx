@@ -41,8 +41,11 @@ export const useImageUpload = () => {
         // Store result in Redux
         dispatch(setAnalysisData(result));
 
+        // Success state
+        alert("Image analyzed successfully!");
+
         // Navigate to summary
-        router.push("/summary");
+        router.push("/select");
 
         return result;
       } catch (err) {
