@@ -5,9 +5,9 @@ import analysisReducer from "./slices/analysisSlice";
 
 // Persist configuration
 const persistConfig = {
-  key: "root", // Key in localStorage
-  storage, // Use localStorage
-  whitelist: ["analysis"], // Only persist the analysis slice
+  key: "analysis",
+  storage,
+  whitelist: ["data"],
 };
 
 // Wrap reducer with persistReducer
