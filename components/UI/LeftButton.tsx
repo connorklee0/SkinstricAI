@@ -11,6 +11,7 @@ interface LeftButtonProps {
 const LeftButton = ({ text, link, disabled = false }: LeftButtonProps) => {
   return (
     <>
+      {/* Desktop View */}
       <div className="max-md:hidden">
         <Link
           href={link}
@@ -30,6 +31,7 @@ const LeftButton = ({ text, link, disabled = false }: LeftButtonProps) => {
         </Link>
       </div>
 
+      {/* Mobile and Tablet View */}
       <div className="md:hidden relative transition duration-300 hover:scale-110">
         <div className="w-14 h-14 border-2 border-[#A0A4AB] rotate-45 " />
         <Link

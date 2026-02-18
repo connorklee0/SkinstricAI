@@ -33,7 +33,7 @@ const Result = () => {
       >
         <div className="absolute right-10 top-20">
           <p className="text-sm">Preview</p>
-          <div className="border border-[#a0a4ab73] w-30 h-30 relative">
+          <div className="border border-[#a0a4ab73] md:w-30 md:h-30 relative w-20 h-20">
             {previewImage && (
               <Image
                 src={previewImage}
@@ -69,24 +69,27 @@ const Result = () => {
           </Border>
         ) : (
           <>
-            {/* Camera */}
-            <CameraOption onClick={() => setIsModalOpen(true)} />
+            {/* Desktop View */}
+            <div className="flex max-md:flex-col max-md:gap-20">
+              {/* Camera */}
+              <CameraOption onClick={() => setIsModalOpen(true)} />
 
-            {isModalOpen && (
-              <div className="absolute right-15 top-5">
-                <AccessModal onClose={() => setIsModalOpen(false)} />
+              {isModalOpen && (
+                <div className="absolute md:right-15 md:top-5">
+                  <AccessModal onClose={() => setIsModalOpen(false)} />
+                </div>
+              )}
+
+              {/* Gallery */}
+              <div
+                className={
+                  isModalOpen
+                    ? "pointer-events-none opacity-50 transition duration-500"
+                    : ""
+                }
+              >
+                <GalleryOption onClick={triggerFileInput} />
               </div>
-            )}
-
-            {/* Gallery */}
-            <div
-              className={
-                isModalOpen
-                  ? "pointer-events-none opacity-50 transition duration-500"
-                  : ""
-              }
-            >
-              <GalleryOption onClick={triggerFileInput} />
             </div>
           </>
         )}
