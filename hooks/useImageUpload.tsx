@@ -2,51 +2,66 @@
 
 import { useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/store/hooks";
+import { setAnalysisData } from "@/store/slices/analysisSlice";
 import {
   convertImageToBase64,
   submitImageAnalysis,
   ImageUploadError,
 } from "@/library/imageUpload";
+import { AnalysisResult } from "@/store/slices/analysisSlice";
 
 export const useImageUpload = () => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
+
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFileSelect = useCallback(async (file: File) => {
-    setError("");
-    setIsUploading(true);
+  const handleFileSelect = useCallback(
+    async (file: File) => {
+      setError("");
+      setIsUploading(true);
 
-    try {
-      // Create preview
-      const previewUrl = URL.createObjectURL(file);
-      setPreviewImage(previewUrl);
+      try {
+        // Create preview
+        const previewUrl = URL.createObjectURL(file);
+        setPreviewImage(previewUrl);
 
-      // Convert to base64
-      const base64Image = await convertImageToBase64(file);
+        // Convert to base64
+        const base64Image = await convertImageToBase64(file);
 
-      // Submit to API
-      const result = await submitImageAnalysis(base64Image);
+        // Submit to API
+        const result = (await submitImageAnalysis(
+          base64Image,
+        )) as AnalysisResult;
 
-      alert("Image analyzed successfully!");
-      if (result) {
+        // Store result in Redux
+        dispatch(setAnalysisData(result));
+
+        // Success state
+        alert("Image analyzed successfully!");
+
+        // Navigate to summary
         router.push("/select");
-      }
 
-      return result;
-    } catch (err) {
-      if (err instanceof ImageUploadError) {
-        setError(err.message);
-      } else {
-        setError("An unexpected error occurred");
+        return result;
+      } catch (err) {
+        const errorMessage =
+          err instanceof ImageUploadError
+            ? err.message
+            : "An unexpected error occurred";
+
+        setError(errorMessage);
+        setPreviewImage(null);
+      } finally {
+        setIsUploading(false);
       }
-      setPreviewImage(null);
-    } finally {
-      setIsUploading(false);
-    }
-  }, []);
+    },
+    [dispatch, router],
+  );
 
   const handleFileInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
