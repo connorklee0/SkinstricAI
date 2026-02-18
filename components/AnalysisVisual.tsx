@@ -102,14 +102,14 @@ export const AnalysisVisual: React.FC<AnalysisVisualProps> = ({
   const strokeDashoffset = circumference - selectedPercentage * circumference;
 
   return (
-    <div className="flex gap-6 w-full h-100 mx-auto mt-15">
-      {/* Left Sidebar - Category Selection */}
-      <div className="flex flex-col gap-4 w-30 ml-8">
+    <div className="flex gap-6 w-full h-100 mx-auto mt-15 max-md:flex-col max-md:px-8">
+      {/* Category Selection */}
+      <div className="flex flex-col gap-4 md:w-30 w-full md:ml-8">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => handleCategoryChange(category)}
-            className={`p-2 text-left text-sm capitalize border-t font-bold transition-colors ${
+            className={`p-2 text-left text-sm capitalize border-t font-bold transition-colors cursor-pointer ${
               selectedCategory === category
                 ? "bg-black text-white"
                 : "text-black hover:bg-gray-300"
@@ -122,15 +122,15 @@ export const AnalysisVisual: React.FC<AnalysisVisualProps> = ({
         ))}
       </div>
 
-      {/* Middle - Circle Percentage */}
-      <div className="flex-1 flex items-center justify-center border-t relative">
-        <div className="absolute left-5 top-5 text-3xl">
+      {/* Circle Percentage */}
+      <div className="flex-1 flex items-center justify-center md:border-t relative">
+        <div className="max-md:hidden absolute left-5 top-5 text-3xl">
           <span className="capitalize">{currentSelectedOption}</span>
           {selectedCategory.toLowerCase() === "age" && ` y.o.`}
         </div>
 
         {/* Fixed size container so layout never shifts */}
-        <div className="absolute right-0 bottom-25 w-[300px] h-[300px]">
+        <div className="md:absolute right-0 bottom-25 w-[300px] h-[300px]">
           <svg width="300" height="300" className="transform -rotate-90">
             {/* Background circle */}
             <circle
@@ -165,12 +165,12 @@ export const AnalysisVisual: React.FC<AnalysisVisualProps> = ({
       </div>
 
       {/* Bottom hint */}
-      <div className="absolute text-center bottom-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#313030af]">
+      <div className="md:absolute text-center bottom-10 left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2 text-[#313030af] max-md:text-xs">
         If A.I. estimate is wrong, select the correct one.
       </div>
 
-      {/* Right Sidebar - Options List */}
-      <div className="w-80 p-3 border-t mr-8">
+      {/* Options List */}
+      <div className="md:w-80 p-3 border-t mr-8 max-md:pb-30">
         <div className="flex justify-between items-center mb-2">
           <h3 className="uppercase text-sm">{selectedCategory}</h3>
           <h3 className="uppercase text-sm">A.I. Confidence</h3>

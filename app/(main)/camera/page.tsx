@@ -19,7 +19,7 @@ const Page = () => {
           </div>
         </Border>
       </div>{" "}
-      <div className="absolute text-center bottom-15 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex uppercase text-sm text-[#838181]">
+      <div className="absolute text-center bottom-15 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex uppercase text-xs text-[#838181]">
         <div className="flex flex-col gap-4">
           <p>To get better results make sure to have</p>
           <div className="flex gap-4">

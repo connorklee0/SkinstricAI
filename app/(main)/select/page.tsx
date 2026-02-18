@@ -59,8 +59,12 @@ const page = () => {
         <LeftButton text={"Back"} link={"/result"} />
       </div>
 
-      <div className="absolute bottom-10 right-10">
+      <div className="absolute bottom-10 right-10 max-md:hidden">
         <RightButton text={"Get Summary"} link={"/summary"} />
+      </div>
+
+      <div className="absolute bottom-10 right-10 md:hidden">
+        <RightButton text={"Summary"} link={"/summary"} />
       </div>
     </div>
   );
