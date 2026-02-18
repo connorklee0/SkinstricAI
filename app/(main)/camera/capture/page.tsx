@@ -37,8 +37,8 @@ const Page = () => {
     <div>
       {/* Main Camera View */}
       <div>
-        {isUploading ? (
-          <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        {isUploading && (
+          <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
             <div className="flex items-center justify-center w-70 h-40 bg-[#ada2a2ac] rounded ">
               <div className="text-lg font-bold uppercase flex flex-col items-center">
                 Analyzing Image
@@ -46,9 +46,11 @@ const Page = () => {
               </div>
             </div>
           </div>
-        ) : capturedImage ? (
+        )}
+
+        {capturedImage ? (
           // Captured Image Preview
-          <div className="relative w-full h-[90vh]">
+          <div className="relative w-full h-[89vh]">
             <Image
               src={capturedImage}
               alt="Captured Image"
@@ -58,7 +60,7 @@ const Page = () => {
           </div>
         ) : (
           // Live Camera Feed
-          <div className="relative w-full h-[90vh]">
+          <div className="relative w-full h-[89vh]">
             <video
               ref={videoRef}
               autoPlay
@@ -92,7 +94,7 @@ const Page = () => {
                 <button
                   onClick={retakePhoto}
                   disabled={isUploading}
-                  className="flex flex-col items-center gap-2 text-sm text-[#5b5555] bg-white px-5 py-2 hover:text-black transition disabled:opacity-50 cursor-pointer"
+                  className="flex items-center text-sm text-[#5b5555] bg-white md:px-5 md:py-2 px-2 py-1 hover:text-black transition disabled:opacity-50 cursor-pointer"
                 >
                   Retake
                 </button>
@@ -100,9 +102,9 @@ const Page = () => {
                 <button
                   onClick={usePhoto}
                   disabled={isUploading}
-                  className="flex flex-col items-center gap-2 text-sm text-white bg-black px-5 py-2 font-bold hover:scale-105 transition disabled:opacity-50 cursor-pointer"
+                  className="flex items-center text-sm text-white bg-black md:px-5 md:py-2 px-2 py-1 font-bold hover:scale-105 transition disabled:opacity-50 cursor-pointer"
                 >
-                  Use This Photo
+                  {!isUploading ? "Use This Photo" : "Uploading..."}
                 </button>
               </div>
             </div>
@@ -127,7 +129,7 @@ const Page = () => {
       )}
 
       {!capturedImage && !isUploading && (
-        <div className="absolute text-center bottom-15 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex uppercase text-sm text-white">
+        <div className="absolute text-center bottom-15 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex uppercase text-xs text-white">
           <div className="flex flex-col gap-4">
             <p>To get better results make sure to have</p>
             <div className="flex gap-4">

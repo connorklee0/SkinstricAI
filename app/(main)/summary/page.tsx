@@ -14,7 +14,7 @@ const Page = () => {
       {/* Header */}
       <div className="mt-8 ml-8">
         <div className="uppercase text-xs font-bold">A.I. analysis</div>
-        <div className="uppercase text-5xl">Demographics</div>
+        <div className="uppercase md:text-5xl text-3xl">Demographics</div>
         <div className="uppercase text-xs">Predicted race & age</div>
       </div>
 
@@ -38,11 +38,11 @@ const Page = () => {
       )}
 
       {/* Navigation Buttons */}
-      <div className="absolute bottom-10 left-10">
+      <div className="fixed bottom-10 left-10">
         <LeftButton text={"Back"} link={"/select"} />
       </div>
 
-      <div className="absolute bottom-10 right-10">
+      <div className="fixed bottom-10 right-10">
         <RightButton text={"Home"} link={"/"} />
       </div>
     </div>

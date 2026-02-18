@@ -4,13 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import LeftButton from "@/components/UI/LeftButton";
 import Border from "@/components/UI/Border";
-import Camera from "@/public/camera.svg";
-import Gallery from "@/public/gallery.svg";
-import GalleryLine from "@/public/galleryline.svg";
-import CameraLine from "@/public/cameraline.svg";
 import AccessModal from "@/components/AccessModal";
 import { LoadingEllipsis } from "@/components/UI/LoadingEllipsis";
 import { useImageUpload } from "@/hooks/useImageUpload";
+import GalleryOption from "@/components/GalleryOption";
+import CameraOption from "@/components/CameraOption";
 
 const Result = () => {
   const {
@@ -35,7 +33,7 @@ const Result = () => {
       >
         <div className="absolute right-10 top-20">
           <p className="text-sm">Preview</p>
-          <div className="border border-[#a0a4ab73] w-30 h-30 relative">
+          <div className="border border-[#a0a4ab73] md:w-30 md:h-30 relative w-20 h-20">
             {previewImage && (
               <Image
                 src={previewImage}
@@ -59,7 +57,7 @@ const Result = () => {
       />
 
       {/* Main Content */}
-      <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex">
+      <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex ">
         {isUploading ? (
           <Border size={90}>
             <div className="flex flex-col">
@@ -71,64 +69,27 @@ const Result = () => {
           </Border>
         ) : (
           <>
-            {/* Camera */}
-            <Border size={50} className="-translate-x-50">
-              <button
-                className="cursor-pointer"
-                onClick={() => setIsModalOpen(true)}
+            {/* Desktop View */}
+            <div className="flex max-md:flex-col max-md:gap-20">
+              {/* Camera */}
+              <CameraOption onClick={() => setIsModalOpen(true)} />
+
+              {isModalOpen && (
+                <div className="absolute md:right-15 md:top-5">
+                  <AccessModal onClose={() => setIsModalOpen(false)} />
+                </div>
+              )}
+
+              {/* Gallery */}
+              <div
+                className={
+                  isModalOpen
+                    ? "pointer-events-none opacity-50 transition duration-500"
+                    : ""
+                }
               >
-                <Image
-                  src={Camera}
-                  alt="Camera"
-                  className="hover:scale-110 transition duration-800"
-                  draggable={false}
-                  loading="eager"
-                />
-              </button>
-              <div className="absolute -top-7 -right-8">
-                <div className="absolute left-8 -top-8 w-40">
-                  <p className="uppercase text-xs text-left">
-                    Allow A.I. <br /> to scan your face
-                  </p>
-                </div>
-                <Image src={CameraLine} alt="" draggable={false} />
+                <GalleryOption onClick={triggerFileInput} />
               </div>
-            </Border>
-
-            {isModalOpen && (
-              <div className="absolute right-15 top-5">
-                <AccessModal onClose={() => setIsModalOpen(false)} />
-              </div>
-            )}
-
-            {/* Gallery */}
-            <div
-              className={
-                isModalOpen
-                  ? "pointer-events-none opacity-50 transition duration-500"
-                  : ""
-              }
-            >
-              <Border size={50} className="translate-x-50">
-                <button className="cursor-pointer" onClick={triggerFileInput}>
-                  <Image
-                    src={Gallery}
-                    alt="Gallery"
-                    className="hover:scale-110 transition duration-800"
-                    draggable={false}
-                    loading="eager"
-                  />
-                </button>
-
-                <div className="absolute -bottom-8 -left-5 ">
-                  <Image src={GalleryLine} alt="" draggable={false} />
-                  <div className="absolute right-12 w-40">
-                    <p className="uppercase text-xs text-right">
-                      Allow A.I. <br /> access to gallery
-                    </p>
-                  </div>
-                </div>
-              </Border>{" "}
             </div>
           </>
         )}
