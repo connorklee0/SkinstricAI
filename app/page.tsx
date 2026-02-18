@@ -1,9 +1,32 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import RightButton from "@/public/buttin-icon-shrunk-right.svg";
 import LeftButton from "@/public/buttin-icon-shrunk-left.svg";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+  const titleRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Title animation
+    if (titleRef.current) {
+      gsap.fromTo(
+        titleRef.current,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 2,
+          ease: "power2.out",
+        },
+      );
+    }
+  }, []);
+
   return (
     <>
       <div className="max-md:hidden">
@@ -17,12 +40,15 @@ export default function Home() {
               className="transition-transform duration-300 group-hover:scale-110"
               draggable={false}
             />
-            <div className=" text-sm uppercase">Discover A.I.</div>
+            <div className="text-sm uppercase">Discover A.I.</div>
           </button>
         </div>
 
-        {/* Title */}
-        <div className="text-7xl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        {/* Title - Desktop */}
+        <div
+          ref={titleRef}
+          className="text-7xl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        >
           Sophisticated
           <br />
           skincare
@@ -59,8 +85,10 @@ export default function Home() {
         <div className="w-90 h-90 border-2 border-dotted border-[#A0A4AB] rotate-45 absolute -bottom-12 scale-80" />
         <div className="w-90 h-90 border-2 border-dotted border-[#A0A4AB] rotate-45 absolute -bottom-12" />
 
-        {/* Content */}
-        <p className="text-5xl"> Sophisticated skincare</p>
+        {/* Title - Mobile */}
+        <p ref={titleRef} className="text-5xl">
+          Sophisticated skincare
+        </p>
         <p className="text-sm">
           Skinstric developed an A.I. that creates a <br /> highly-personalized
           routine tailored to <br />
@@ -71,7 +99,7 @@ export default function Home() {
           href={"/testing"}
           className="uppercase text-xs font-bold flex items-center gap-3 hover:scale-110 transition duration-300"
         >
-          Enter Experience{" "}
+          Enter Experience
           <Image
             src={RightButton}
             alt="go to Take Test page"
