@@ -9,6 +9,7 @@ import Link from "next/link";
 
 export default function Home() {
   const titleRef = useRef<HTMLDivElement>(null);
+  const mobileTitleRef = useRef<HTMLDivElement>(null);
   const leftButtonRef = useRef<HTMLDivElement>(null);
   const rightButtonRef = useRef<HTMLDivElement>(null);
 
@@ -18,7 +19,15 @@ export default function Home() {
       gsap.fromTo(
         titleRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 2, delay: 0.3, ease: "power2.out" },
+        { opacity: 1, duration: 2, delay: 0.3 },
+      );
+    }
+
+    if (mobileTitleRef.current) {
+      gsap.fromTo(
+        mobileTitleRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 2, delay: 0.3 },
       );
     }
   }, []);
@@ -26,14 +35,15 @@ export default function Home() {
   // Left button hover - title moves right, right button fades out
   const handleLeftHover = () => {
     gsap.to(titleRef.current, {
-      x: 200,
-      duration: 0.6,
+      x: 350,
+      textAlign: "right",
+      duration: 1,
       ease: "power2.out",
     });
     gsap.to(rightButtonRef.current, {
       opacity: 0,
       duration: 0.4,
-      delay: 0.5,
+      delay: 0.3,
       ease: "power2.out",
     });
   };
@@ -41,6 +51,7 @@ export default function Home() {
   const handleLeftLeave = () => {
     gsap.to(titleRef.current, {
       x: 0,
+      textAlign: "center",
       duration: 0.6,
       ease: "power2.out",
     });
@@ -54,21 +65,26 @@ export default function Home() {
   // Right button hover - title moves left, left button fades out
   const handleRightHover = () => {
     gsap.to(titleRef.current, {
-      x: -200,
-      duration: 0.6,
+      x: -350,
+      textAlign: "left",
+      duration: 1,
       ease: "power2.out",
     });
     gsap.to(leftButtonRef.current, {
       opacity: 0,
       duration: 0.4,
-      delay: 0.5,
+      delay: 0.3,
       ease: "power2.out",
     });
+    if (titleRef.current) {
+      titleRef.current.style.textAlign = "right";
+    }
   };
 
   const handleRightLeave = () => {
     gsap.to(titleRef.current, {
       x: 0,
+      textAlign: "center",
       duration: 0.6,
       ease: "power2.out",
     });
@@ -77,6 +93,9 @@ export default function Home() {
       duration: 0.4,
       ease: "power2.out",
     });
+    if (titleRef.current) {
+      titleRef.current.style.textAlign = "center";
+    }
   };
 
   return (
@@ -105,7 +124,10 @@ export default function Home() {
         </div>
 
         {/* Title - Desktop */}
-        <div className="text-7xl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div
+          ref={titleRef}
+          className="text-7xl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        >
           Sophisticated
           <br />
           skincare
@@ -148,7 +170,7 @@ export default function Home() {
         <div className="w-90 h-90 border-2 border-dotted border-[#A0A4AB] rotate-45 absolute -bottom-12" />
 
         {/* Title - Mobile */}
-        <p ref={titleRef} className="text-5xl">
+        <p ref={mobileTitleRef} className="text-5xl">
           Sophisticated skincare
         </p>
         <p className="text-sm">
