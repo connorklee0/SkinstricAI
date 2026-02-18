@@ -133,7 +133,7 @@ export const AnalysisVisual: React.FC<AnalysisVisualProps> = ({
         </div>
 
         {/* Fixed size container so layout never shifts */}
-        <div className="absolute -right-0 bottom-25 w-[300px] h-[300px]">
+        <div className="absolute right-0 bottom-25 w-[300px] h-[300px]">
           <svg width="300" height="300" className="transform -rotate-90">
             {/* Background circle */}
             <circle

@@ -1,9 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface AnalysisResult {
+export interface AnalysisData {
   [category: string]: {
     [key: string]: number;
   };
+}
+
+export interface AnalysisResult {
+  success: boolean;
+  message: string;
+  data: AnalysisData;
 }
 
 interface AnalysisState {

@@ -6,7 +6,7 @@ import RightButton from "@/components/UI/RightButton";
 import { AnalysisVisual } from "@/components/AnalysisVisual";
 import Link from "next/link";
 
-const page = () => {
+const Page = () => {
   const analysisData = useAppSelector((state) => state.analysis.data);
 
   return (
@@ -19,7 +19,7 @@ const page = () => {
       </div>
 
       {/* Main Content */}
-      {!analysisData ? (
+      {!analysisData?.data ? (
         <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="flex flex-col gap-2">
             No analysis data found. Please upload an image first.
@@ -33,7 +33,7 @@ const page = () => {
         </div>
       ) : (
         <>
-          <AnalysisVisual analysisData={analysisData?.data} />
+          <AnalysisVisual analysisData={analysisData.data} />
         </>
       )}
 
@@ -49,4 +49,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
