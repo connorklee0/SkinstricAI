@@ -1,9 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import RadioBtn from "@/public/radio-button.svg";
-import RadioBtnSelected from "@/public/radio-button-selected.svg";
-import Image from "next/image";
 
 interface AnalysisVisualProps {
   analysisData: {
@@ -191,12 +188,10 @@ export const AnalysisVisual: React.FC<AnalysisVisualProps> = ({
               }`}
             >
               <div className="flex items-center gap-3">
-                {currentSelectedOption === key ? (
-                  <Image src={RadioBtnSelected} alt="" />
-                ) : (
-                  <Image src={RadioBtn} alt="" />
-                )}
-                <span className="capitalize text-sm">{key}</span>
+                <span className="capitalize text-sm flex gap-2">
+                  {currentSelectedOption === key ? <p>◈</p> : <p>⬦</p>}
+                  {key}
+                </span>
               </div>
               <span>{Math.round(percentage * 100)}%</span>
             </button>
