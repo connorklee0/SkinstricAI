@@ -63,9 +63,9 @@ export const useCamera = () => {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      ctx.drawImage(video, 0, 0);
+    const context = canvas.getContext("2d");
+    if (context) {
+      context.drawImage(video, 0, 0);
       const imageData = canvas.toDataURL("image/jpeg");
       setCapturedImage(imageData);
       stopCamera();
