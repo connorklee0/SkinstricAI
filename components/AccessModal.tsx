@@ -7,7 +7,7 @@ interface AccessModalProps {
 const AccessModal: React.FC<AccessModalProps> = ({ onClose }) => {
   return (
     <div className="w-60 h-30 bg-black flex flex-col justify-between">
-      <div className="text-white text-md capitalize text-left px-4 py-2">
+      <div className="text-white text-md uppercase text-left px-4 py-2">
         Allow A.I. to access your camera
       </div>
       <div className="border-t border-white flex gap-10 justify-end px-4 py-2">
