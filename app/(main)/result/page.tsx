@@ -48,7 +48,7 @@ const Result = () => {
 
       {/* Main Content */}
       <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex">
-        {isUploading ? (
+        {true ? (
           <Border size={90}>
             <div className="flex flex-col">
               <div className="text-lg font-bold uppercase flex flex-col items-center">
@@ -91,7 +91,7 @@ const Result = () => {
                   loading="eager"
                 />
               </button>
-              <div className="absolute -bottom-9 -left-5">
+              <div className="absolute -bottom-8 -left-5">
                 <Image src={GalleryLine} alt="" draggable={false} />
                 <div className="absolute right-12 w-40">
                   <p className="uppercase text-xs text-right">
