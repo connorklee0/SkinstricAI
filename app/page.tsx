@@ -53,6 +53,7 @@ export default function Home() {
         </p>
       </div>
 
+      {/* Mobile and Tablet Screens */}
       <div className="md:hidden text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 items-center">
         {/* Borders */}
         <div className="w-90 h-90 border-2 border-dotted border-[#A0A4AB] rotate-45 absolute -bottom-12 scale-80" />
