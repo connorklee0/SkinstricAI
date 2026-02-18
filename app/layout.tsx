@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "SKINSTRIC",
@@ -17,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <Providers>{children}</Providers>
+        {children}
       </body>
     </html>
   );
