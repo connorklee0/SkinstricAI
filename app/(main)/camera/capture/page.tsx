@@ -37,8 +37,8 @@ const Page = () => {
     <div>
       {/* Main Camera View */}
       <div>
-        {isUploading ? (
-          <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        {isUploading && (
+          <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
             <div className="flex items-center justify-center w-70 h-40 bg-[#ada2a2ac] rounded ">
               <div className="text-lg font-bold uppercase flex flex-col items-center">
                 Analyzing Image
@@ -46,7 +46,9 @@ const Page = () => {
               </div>
             </div>
           </div>
-        ) : capturedImage ? (
+        )}
+
+        {capturedImage ? (
           // Captured Image Preview
           <div className="relative w-full h-[89vh]">
             <Image
