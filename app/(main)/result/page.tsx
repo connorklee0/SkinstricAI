@@ -4,13 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import LeftButton from "@/components/UI/LeftButton";
 import Border from "@/components/UI/Border";
-import Camera from "@/public/camera.svg";
-import Gallery from "@/public/gallery.svg";
-import GalleryLine from "@/public/galleryline.svg";
-import CameraLine from "@/public/cameraline.svg";
 import AccessModal from "@/components/AccessModal";
 import { LoadingEllipsis } from "@/components/UI/LoadingEllipsis";
 import { useImageUpload } from "@/hooks/useImageUpload";
+import GalleryOption from "@/components/GalleryOption";
+import CameraOption from "@/components/CameraOption";
 
 const Result = () => {
   const {
@@ -59,7 +57,7 @@ const Result = () => {
       />
 
       {/* Main Content */}
-      <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex">
+      <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex ">
         {isUploading ? (
           <Border size={90}>
             <div className="flex flex-col">
@@ -72,28 +70,7 @@ const Result = () => {
         ) : (
           <>
             {/* Camera */}
-            <Border size={50} className="-translate-x-50">
-              <button
-                className="cursor-pointer"
-                onClick={() => setIsModalOpen(true)}
-              >
-                <Image
-                  src={Camera}
-                  alt="Camera"
-                  className="hover:scale-110 transition duration-800"
-                  draggable={false}
-                  loading="eager"
-                />
-              </button>
-              <div className="absolute -top-7 -right-8">
-                <div className="absolute left-8 -top-8 w-40">
-                  <p className="uppercase text-xs text-left">
-                    Allow A.I. <br /> to scan your face
-                  </p>
-                </div>
-                <Image src={CameraLine} alt="" draggable={false} />
-              </div>
-            </Border>
+            <CameraOption onClick={() => setIsModalOpen(true)} />
 
             {isModalOpen && (
               <div className="absolute right-15 top-5">
@@ -109,26 +86,7 @@ const Result = () => {
                   : ""
               }
             >
-              <Border size={50} className="translate-x-50">
-                <button className="cursor-pointer" onClick={triggerFileInput}>
-                  <Image
-                    src={Gallery}
-                    alt="Gallery"
-                    className="hover:scale-110 transition duration-800"
-                    draggable={false}
-                    loading="eager"
-                  />
-                </button>
-
-                <div className="absolute -bottom-8 -left-5 ">
-                  <Image src={GalleryLine} alt="" draggable={false} />
-                  <div className="absolute right-12 w-40">
-                    <p className="uppercase text-xs text-right">
-                      Allow A.I. <br /> access to gallery
-                    </p>
-                  </div>
-                </div>
-              </Border>{" "}
+              <GalleryOption onClick={triggerFileInput} />
             </div>
           </>
         )}
