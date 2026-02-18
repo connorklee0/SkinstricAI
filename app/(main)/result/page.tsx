@@ -48,7 +48,7 @@ const Result = () => {
 
       {/* Main Content */}
       <div className="absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex">
-        {true ? (
+        {isUploading ? (
           <Border size={90}>
             <div className="flex flex-col">
               <div className="text-lg font-bold uppercase flex flex-col items-center">
